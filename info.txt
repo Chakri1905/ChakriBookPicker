@@ -1,0 +1,44 @@
+Data Loading:
+
+The required data files are loaded using Pandas' read_csv() function.
+Three data files are loaded: Books.csv, Users.csv, and Ratings.csv.
+Preprocessing and Exploration:
+
+Various exploratory and preprocessing steps are performed on the loaded data.
+The shape of the dataframes (books, ratings, users) is printed to check the number of rows and columns.
+Missing values in each dataframe are checked using the isnull().sum() function.
+Duplicates in each dataframe are checked using the duplicated().sum() function.
+Popularity-Based Recommender System:
+
+Ratings data is merged with the books data using the 'ISBN' column.
+The number of ratings for each book is calculated by grouping the data by 'Book-Title' and counting the 'Book-Rating' column.
+The average rating for each book is calculated by grouping the data by 'Book-Title' and taking the mean of the 'Book-Rating' column.
+The resulting dataframes are merged based on the 'Book-Title' column.
+The popular books are selected by filtering books with at least 250 ratings.
+The resulting popular books dataframe is merged with the books dataframe to obtain additional information like book author and image URL.
+Collaborative Filtering-Based Recommender System:
+
+Users with more than 200 ratings are considered as "padhe_likhe_users."
+Ratings data is filtered to include only the ratings from "padhe_likhe_users."
+Books with at least 50 ratings are considered as "famous_books."
+The filtered ratings data is further filtered to include only the ratings for "famous_books."
+A pivot table is created with book titles as rows and user IDs as columns, with book ratings as values.
+The pivot table is filled with 0s for missing values.
+Similarity scores between books are calculated using cosine similarity on the pivot table.
+Recommendation Function:
+
+The recommend() function takes a book name as input.
+It finds the index of the book in the pivot table.
+It calculates the similarity scores between the input book and other books based on the cosine similarity scores.
+It returns a list of recommended books, including the book title, author, and image URL.
+Saving Data:
+
+The resulting dataframes and similarity scores are saved using the pickle.dump() function.
+Summary of Libraries and Functions Used:
+
+Pandas: Used for data manipulation, loading CSV files, and performing exploratory data analysis.
+NumPy: Used for various mathematical operations and array manipulation.
+sklearn.metrics.pairwise.cosine_similarity: Used to calculate the cosine similarity between books based on the pivot table.
+pickle: Used to save the resulting dataframes and similarity scores.
+Overall, the book recommendation system includes data loading, preprocessing, popularity-based recommendation, collaborative filtering-based recommendation, and a function to provide book recommendations based on input.
+The resulting dataframes and similarity scores are saved using the pickle module for future use.

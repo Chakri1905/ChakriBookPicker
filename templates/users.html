@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chakri's Book Picker</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<style>
+    .text-white{
+        color:white
+    }
+</style>
+<body class="body">
+
+    <nav class="navbar" style="background-image: linear-gradient(to bottom right, #d9d9d9, #bfbfbf, #a6a6a6);
+  background-image: linear-gradient(to right, #bfbfbf, #d9d9d9, #a6a6a6, #8c8c8c, #737373, #a6a6a6, #bfbfbf, #d9d9d9);">
+        <a class="navbar-brand">Chakri's Book Picker</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a href="/users">User</a></li>
+        </ul>
+    </nav>
+    <div class="img">
+        <img class="img" src="{{ url_for('static', filename='book_img.png') }}">
+        <h1>Welcome to Chakri's Book Picker</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Give your Review</h1>
+            </div>
+
+           <div class="reviews">
+               <h1>Rate a Book</h1>
+
+    <form method="POST" action="/users_ratings">
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" required><br><br>
+
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" required><br><br>
+
+        <label for="rating">Book Rating:</label>
+        <input type="number" id="rating" name="rating" min="1" max="10" required><br><br>
+
+        <label for="Book_title">Book Title:</label>
+        <input type="text" id="Book_title" name="Book_title" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+               {% if data %}
+
+                <div class="col-md-3" style="margin-top:50px">
+                    <div class="card" style="background-image: linear-gradient(to right, #e79c50, #df8434, #df6c1f);
+background-image: linear-gradient(to bottom left, #bfbfbf, #d9d9d9, #a6a6a6, #8c8c8c, #737373, #a6a6a6, #bfbfbf, #d9d9d9);">
+                        <div class="card-body">
+                            <h4 class="text-white">user-id- {{data[0]}}</h4>
+                            <h4 class="text-white">ISBN- {{data[1]}}</h4>
+                            <h4 class="text-white">Book Rating- {{data[2]}}</h4>
+                            <h4 class="text-white">Book Title- {{data[3]}}</h4>
+                        </div>
+                    </div>
+                    <h4 class="text-white">{{data[4]}}</h4>
+                </div>
+
+            {% endif %}
+           </div>
+
+
+        </div>
+    </div>
+
+</body>
+</html>
