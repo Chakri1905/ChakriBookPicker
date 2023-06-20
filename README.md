@@ -27,6 +27,10 @@ Database : Mysql
 
 ![alt text](https://github.com/Chakri1905/ChakriBookPicker/blob/master/chakri'sbookpicker%20screenshots/booksrecommended.png)
 
+![alt text](https://github.com/Chakri1905/ChakriBookPicker/blob/master/chakri'sbookpicker%20screenshots/reommend1.png)
+
+
+
 3. user rating:
 ![alt text](https://github.com/Chakri1905/ChakriBookPicker/blob/master/chakri'sbookpicker%20screenshots/user%20review.png)
 
